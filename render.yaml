@@ -3,9 +3,9 @@ services:
     name: apex-markets-cfd
     runtime: node
     plan: free
-    rootDir: server
-    buildCommand: cd .. && npm install && npm run build
-    startCommand: npm start
+    rootDir: "."
+    buildCommand: npm install && npm run build
+    startCommand: npm --prefix server run start
     envVars:
       - key: NODE_ENV
         value: production

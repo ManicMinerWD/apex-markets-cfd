@@ -157,15 +157,17 @@ export function createApp() {
   // ---- Instrument catalog (for UI) ----
   app.get("/api/instruments", (_req, res) => res.json(INSTRUMENTS));
 
-  // ---- Serve built UI (production) + DEMO banner ----
-  const webDist = path.resolve(process.cwd(), "../web/dist");
-  if (fs.existsSync(webDist)) {
-    app.use(express.static(webDist));
-    app.get("*", (_req, res) => res.sendFile(path.join(webDist, "index.html")));
-  }
+  // ---- DEMO banner (must be registered BEFORE the static catch-all) ----
   app.get("/api/demo-banner", (_req, res) =>
     res.json({ mode: config.liquidityMode, notice: "DEMO ENVIRONMENT — synthetic prices, virtual funds, no real trading." })
   );
+
+  // ---- Serve built UI (production) + SPA catch-all (non-/api only) ----
+  const webDist = path.resolve(process.cwd(), "../web/dist");
+  if (fs.existsSync(webDist)) {
+    app.use(express.static(webDist));
+    app.get(/^(?!\/api).*/, (_req, res) => res.sendFile(path.join(webDist, "index.html")));
+  }
 
   return app;
 }
