@@ -1,0 +1,63 @@
+:root {
+  --bg: #0a0e17;
+  --panel: #121826;
+  --panel2: #1a2233;
+  --line: #232c40;
+  --txt: #e6ebf2;
+  --mut: #8a96ad;
+  --brand: #2b6cff;
+  --brand2: #1b4fd1;
+  --up: #21c87a;
+  --down: #ff5a6a;
+  --warn: #ffb02e;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--txt); font-family: "Inter", system-ui, sans-serif; }
+.app { min-height: 100vh; }
+.topbar { display: flex; align-items: center; justify-content: space-between; padding: 14px 22px; background: var(--panel); border-bottom: 1px solid var(--line); }
+.brand { font-weight: 800; letter-spacing: 1px; font-size: 18px; }
+.brand span { color: var(--brand); margin-left: 6px; font-weight: 500; }
+.brand.big { font-size: 34px; text-align: center; margin: 8px 0; }
+nav button { background: none; border: none; color: var(--mut); padding: 8px 14px; cursor: pointer; font-size: 14px; }
+nav button.active { color: var(--txt); border-bottom: 2px solid var(--brand); }
+.acct { display: flex; align-items: center; gap: 12px; }
+.acct .bal { font-weight: 700; }
+.pill { padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+.kyc-none, .kyc-pending { background: #3a2f12; color: var(--warn); }
+.kyc-verified { background: #0f3a24; color: var(--up); }
+.kyc-rejected { background: #3a1420; color: var(--down); }
+button { font-family: inherit; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+.primary { background: var(--brand); color: #fff; border: none; padding: 12px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; }
+.primary:hover { background: var(--brand2); }
+.seg { display: flex; gap: 8px; margin: 10px 0; }
+.seg button { flex: 1; background: var(--panel2); color: var(--mut); border: 1px solid var(--line); padding: 10px; border-radius: 8px; cursor: pointer; }
+.seg button.active { color: #fff; border-color: var(--brand); }
+.seg button.active.buy { background: #0f3a24; border-color: var(--up); color: var(--up); }
+.seg button.active.sell { background: #3a1420; border-color: var(--down); color: var(--down); }
+input { width: 100%; background: var(--panel2); border: 1px solid var(--line); color: var(--txt); padding: 11px 12px; border-radius: 8px; margin: 8px 0; font-size: 14px; }
+label { font-size: 13px; color: var(--mut); display: block; }
+.auth-wrap { max-width: 420px; margin: 8vh auto; padding: 0 16px; }
+.tag { color: var(--mut); text-align: center; }
+.auth { display: flex; flex-direction: column; }
+.fine { font-size: 11px; color: var(--mut); line-height: 1.5; }
+.err { color: var(--down); font-size: 13px; margin: 6px 0; }
+.warn { color: var(--warn); font-size: 13px; margin-top: 8px; }
+.ok { color: var(--up); font-weight: 600; }
+.toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--panel2); border: 1px solid var(--line); padding: 12px 18px; border-radius: 8px; }
+.loading { padding: 40px; text-align: center; color: var(--mut); }
+.markets { max-width: 1100px; margin: 24px auto; padding: 0 18px; }
+.markets section { margin-bottom: 26px; }
+.markets h3 { color: var(--mut); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
+.tile { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+.tile .sym { font-weight: 800; font-size: 16px; }
+.tile .nm { color: var(--mut); font-size: 12px; margin-bottom: 8px; }
+.tile .px { display: flex; justify-content: space-between; font-size: 13px; }
+.bid { color: var(--up); } .ask { color: var(--down); }
+.trade { max-width: 1000px; margin: 24px auto; padding: 0 18px; display: grid; grid-template-columns: 340px 1fr; gap: 18px; }
+.quote { font-size: 13px; color: var(--mut); margin: 8px 0; }
+.pos { display: flex; align-items: center; justify-content: space-between; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin: 8px 0; }
+.pos .up { color: var(--up); } .pos .down { color: var(--down); }
+.empty { color: var(--mut); }
+.card.positions, .card.ticket { align-self: start; }

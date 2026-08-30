@@ -1,0 +1,16 @@
+{
+  "name": "cfd-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Production-ready CFD trading platform scaffold (Pepperstone-style UI). Sandbox-runnable; wire live license + liquidity provider (MT5/cTrader white-label) + Sumsub KYC to go live.",
+  "license": "UNLICENSED — operator must hold a valid broker license in each jurisdiction served.",
+  "scripts": {
+    "dev": "npm-run-all --parallel dev:server dev:web",
+    "dev:server": "npm --workspace server run dev",
+    "dev:web": "npm --workspace web run dev",
+    "build": "npm --workspace server run build && npm --workspace web run build",
+    "typecheck": "npm --workspace server run typecheck && npm --workspace web run typecheck",
+    "start": "npm --workspace server run start"
+  },
+  "workspaces": ["server", "web"]
+}
