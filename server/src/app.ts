@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
+import path from "path";
+import fs from "fs";
 import { z } from "zod";
 import { config } from "./config.js";
 import { store, INSTRUMENTS, nextId, instrument } from "./store.js";
@@ -154,6 +156,16 @@ export function createApp() {
 
   // ---- Instrument catalog (for UI) ----
   app.get("/api/instruments", (_req, res) => res.json(INSTRUMENTS));
+
+  // ---- Serve built UI (production) + DEMO banner ----
+  const webDist = path.resolve(process.cwd(), "../web/dist");
+  if (fs.existsSync(webDist)) {
+    app.use(express.static(webDist));
+    app.get("*", (_req, res) => res.sendFile(path.join(webDist, "index.html")));
+  }
+  app.get("/api/demo-banner", (_req, res) =>
+    res.json({ mode: config.liquidityMode, notice: "DEMO ENVIRONMENT — synthetic prices, virtual funds, no real trading." })
+  );
 
   return app;
 }

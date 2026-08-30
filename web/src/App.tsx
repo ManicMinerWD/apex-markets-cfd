@@ -21,6 +21,7 @@ export default function App() {
 
   return (
     <div className="app">
+      <div className="demobar">⚠ DEMO ENVIRONMENT — synthetic prices, virtual funds. Not a licensed broker. No real trading.</div>
       <header className="topbar">
         <div className="brand">APEX<span>MARKETS</span></div>
         <nav>

@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: apex-markets-cfd
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: cd .. && npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: LIQUIDITY_MODE
+        value: sandbox
+      - key: SUMSUB_SANDBOX
+        value: "true"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: BLOCKED_COUNTRIES
+        value: US,CA,IR,KP,SY
+      - key: SANDBOX_BALANCE
+        value: "100000"

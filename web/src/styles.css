@@ -11,7 +11,7 @@
   --down: #ff5a6a;
   --warn: #ffb02e;
 }
-* { box-sizing: border-box; }
+.demobar { background: #3a2f12; color: var(--warn); text-align: center; font-size: 12px; font-weight: 600; padding: 7px 12px; letter-spacing: .3px; }
 body { margin: 0; background: var(--bg); color: var(--txt); font-family: "Inter", system-ui, sans-serif; }
 .app { min-height: 100vh; }
 .topbar { display: flex; align-items: center; justify-content: space-between; padding: 14px 22px; background: var(--panel); border-bottom: 1px solid var(--line); }
