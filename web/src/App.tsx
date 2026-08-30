@@ -187,6 +187,10 @@ function Kyc({ me, refreshMe, onToast }: { me: Me | null; refreshMe: () => void;
     try { await client.kycStart(); onToast("KYC started — in production Sumsub widget launches here"); await refreshMe(); }
     catch (e: any) { onToast(e.message); }
   };
+  const force = async () => {
+    try { await client.forceVerify(); onToast("Demo: KYC forced to verified — trading unlocked"); await refreshMe(); }
+    catch (e: any) { onToast(e.message); }
+  };
   return (
     <div className="card kyc">
       <h3>Identity verification (KYC / AML)</h3>
@@ -194,7 +198,10 @@ function Kyc({ me, refreshMe, onToast }: { me: Me | null; refreshMe: () => void;
       <p>Jurisdiction: {me?.jurisdiction} · Max leverage {me?.maxLeverage}×</p>
       <p className="fine">Live mode integrates Sumsub's SDK (sandbox returns a test token). On approval the webhook flips status to <b>verified</b> and trading unlocks.</p>
       {me?.kycStatus !== "verified" ? (
-        <button className="primary" onClick={start}>{me?.kycStatus === "pending" ? "Re-start verification" : "Start verification"}</button>
+        <>
+          <button className="primary" onClick={start}>{me?.kycStatus === "pending" ? "Re-start verification" : "Start verification"}</button>
+          <button className="ghost" onClick={force}>Demo: skip verification</button>
+        </>
       ) : <div className="ok">Verified — you may trade.</div>}
     </div>
   );

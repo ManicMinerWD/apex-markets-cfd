@@ -162,6 +162,17 @@ export function createApp() {
     res.json({ mode: config.liquidityMode, notice: "DEMO ENVIRONMENT — synthetic prices, virtual funds, no real trading." })
   );
 
+  // ---- DEV-ONLY: force KYC verified for sandbox demos (off unless explicitly enabled) ----
+  const forceVerifyEnabled = config.sumsub.sandbox || process.env.DEMO_FORCE_VERIFY === "true";
+  if (forceVerifyEnabled) {
+    app.post("/api/dev/force-verify", auth, async (req: any, res) => {
+      req.user.kycStatus = "verified";
+      store.saveUser(req.user);
+      audit.info("DEV_FORCE_VERIFY", { userId: req.user.id });
+      res.json(publicUser(req.user));
+    });
+  }
+
   // ---- Serve built UI (production) + SPA catch-all (non-/api only) ----
   const webDist = path.resolve(process.cwd(), "../web/dist");
   if (fs.existsSync(webDist)) {

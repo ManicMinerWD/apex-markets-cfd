@@ -21,6 +21,7 @@ export const client = {
   login: (b: any) => api("/api/login", { method: "POST", body: JSON.stringify(b) }),
   me: () => api("/api/me"),
   kycStart: () => api("/api/kyc/start", { method: "POST" }),
+  forceVerify: () => api("/api/dev/force-verify", { method: "POST" }),
   positions: () => api("/api/positions"),
   open: (b: any) => api("/api/trade/open", { method: "POST", body: JSON.stringify(b) }),
   close: (id: string) => api("/api/trade/close", { method: "POST", body: JSON.stringify({ positionId: id }) })

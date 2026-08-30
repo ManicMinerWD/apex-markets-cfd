@@ -30,6 +30,8 @@ button { font-family: inherit; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
 .primary { background: var(--brand); color: #fff; border: none; padding: 12px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; }
 .primary:hover { background: var(--brand2); }
+.ghost { background: transparent; color: var(--mut); border: 1px dashed var(--line); padding: 10px 14px; border-radius: 8px; cursor: pointer; margin-top: 8px; width: 100%; }
+.ghost:hover { color: var(--txt); border-color: var(--mut); }
 .seg { display: flex; gap: 8px; margin: 10px 0; }
 .seg button { flex: 1; background: var(--panel2); color: var(--mut); border: 1px solid var(--line); padding: 10px; border-radius: 8px; cursor: pointer; }
 .seg button.active { color: #fff; border-color: var(--brand); }
